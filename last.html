@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body,
+        html {
+            background-color: rgba(238, 238, 238, 0.6);
+            height: 2000px;
+            background-image: url(img/back.png);
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #eee;
+        }
+        
+        .header {
+            width: 100%;
+            height: 95px;
+        }
+        
+        .consult {
+            background-color: #282828;
+            height: 35px;
+        }
+        
+        .Divbtn {
+            display: none;
+        }
+        
+        .nav {
+            background-color: #eee;
+        }
+        
+        .nav li {
+            margin-left: 10px;
+            margin-right: 5px;
+        }
+        
+        .nav a {
+            font-size: 17px;
+            color: #000;
+        }
+        
+        .nav a:hover {
+            color: #cd6b36;
+        }
+        
+        .nav li:hover {
+            border-bottom: solid 2px #cb5405;
+        }
+        
+        .banner {
+            margin-top: 95px;
+            width: 100%;
+            height: 550px;
+            background: url(img/banner.jpg);
+            background-size: cover;
+        }
+        
+        .item h2 {
+            color: #eee;
+        }
+        
+        .item p {
+            color: #eee;
+            font-size: 16px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        
+        .text1 {
+            width: 260px;
+            height: 30px;
+            border-top: solid 1px white;
+            color: white;
+        }
+        
+        .text2 {
+            width: 320px;
+            border-bottom: solid 1px white;
+            color: white;
+        }
+        
+        .text3 {
+            display: none;
+        }
+        /* 搜索框 */
+        
+        .search {
+            position: absolute;
+            left: 20%;
+            width: 50%;
+            border: 3px solid rgba(26, 14, 14, 0.5);
+            border-radius: 5px;
+            bottom: 20%;
+            padding: 0;
+            text-align: center;
+        }
+        
+        .mudi {
+            background-color: lightgray;
+            width: 25%;
+            float: left;
+            height: 45px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .car {
+            width: 90%;
+            height: 360px;
+            margin: 0 auto;
+            padding: 0;
+            margin-top: 30px;
+        }
+        
+        .car1 {
+            position: relative;
+            width: 75%;
+            height: 100%;
+            background: url(img/Sbanner2.jpg) no-repeat center;
+            background-size: cover;
+            float: left;
+        }
+        
+        .car1 div {
+            position: absolute;
+            top: 5%;
+            right: 10%;
+            color: #fff;
+        }
+        
+        .car2 {
+            width: 25%;
+            height: 100%;
+            background: #14316d;
+            float: left;
+            position: relative;
+        }
+        
+        .car2 p {
+            position: absolute;
+            color: #fff;
+            font-size: 26px;
+            top: 58%;
+            left: 32.5%;
+        }
+        
+        .car2 button {
+            position: absolute;
+            width: 70%;
+            height: 15%;
+            border: solid 1px white;
+            color: white;
+            bottom: 10%;
+            left: 15%;
+            font-size: 24px;
+            border-radius: 10px;
+        }
+        
+        .othercar {
+            display: none;
+        }
+        
+        .route {
+            width: 95%;
+            height: 1155px;
+            margin-top: 10px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .route img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .routetitle {
+            height: 135px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px;
+        }
+        
+        .routetitle p {
+            font-size: 18px;
+            color: #000;
+        }
+        
+        .routeimg {
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            height: 1000px;
+            padding: 0;
+        }
+        
+        .leftimg {
+            width: 49%;
+            height: 1020px;
+            float: left;
+            font-size: 15px;
+            text-align: left;
+        }
+        
+        .left1 {
+            width: 100%;
+            background: black;
+            height: 105px;
+            padding-top: 4%;
+            margin-bottom: 2px;
+        }
+        
+        .left2 {
+            background-color: black;
+            padding-top: 10px;
+            width: 100%;
+            height: 90px;
+        }
+        
+        .rightimg {
+            width: 49%;
+            height: 1000px;
+            float: right;
+        }
+        
+        .rightimg span {
+            font-size: 35px;
+        }
+        
+        .right1 {
+            position: relative;
+            padding: 0;
+        }
+        
+        .right_cover {
+            text-align: left;
+            position: absolute;
+            color: white;
+            padding-top: 2%;
+            padding-left: 2%;
+            z-index: 100;
+            width: 100%;
+            height: 90px;
+            opacity: 0.6;
+            background-color: #000;
+            bottom: 0px;
+        }
+        
+        .otherroute {
+            display: none;
+        }
+        
+        .mission {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        .mission_top img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .mission_title {
+            width: 100%;
+            margin: 0 auto;
+            padding-top: 120px;
+            height: 265px;
+            text-align: center;
+        }
+        
+        .missionimg {
+            width: 95%;
+            margin: 0 auto;
+        }
+        
+        .mission_top {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            margin-bottom: 5px;
+            align-items: stretch;
+            background-size: 250%;
+        }
+        
+        .newleft {
+            width: 40%;
+            height: 100%;
+            float: left;
+        }
+        
+        .servc1 {
+            display: block;
+        }
+        
+        .servc2 {
+            display: none;
+        }
+        
+        .newright {
+            width: 60%;
+            height: 100%;
+            padding: 8% 9.5% 8% 9.5%;
+            background: rgba(28, 79, 127, 0.8);
+            color: #fff;
+            float: left;
+            font-size: 18px;
+        }
+        
+        .newlast {
+            width: 100%;
+        }
+        
+        .mission_last {
+            display: flex;
+            margin: 0 auto;
+            width: 95%;
+            height: auto;
+            background: #1c5080;
+            justify-content: space-around;
+        }
+        
+        .last_box {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            padding: 10% 5% 18% 5%;
+        }
+        
+        .last_box span {
+            font-size: 22px;
+            margin-top: 45%;
+            color: #fff;
+        }
+        
+        .last_box p {
+            font-size: 12px;
+            color: #fff;
+        }
+        
+        .little_sbox {
+            display: none;
+        }
+        
+        .img1 {
+            position: absolute;
+            top: 10%;
+        }
+        
+        .img2 {
+            position: absolute;
+            top: 22%;
+        }
+        
+        .last_text {
+            width: 200%;
+            position: absolute;
+            text-align: center;
+            margin-top: 70%;
+        }
+        
+        .last_text p {
+            font-size: 1.25vw;
+            color: #fff;
+        }
+        
+        .last li {
+            float: left;
+            margin-left: 25px;
+            margin-top: 13px;
+        }
+        
+        .last p {
+            color: gainsboro;
+            font-size: 13px;
+            margin-top: 4px;
+            text-align: center;
+        }
+        
+        .lastDiv {
+            display: none;
+        }
+        /* 分辨率变小 */
+        
+        @media screen and (max-width:720px) {
+            .consult {
+                display: none;
+            }
+            .Divbtn {
+                display: inline-block;
+                position: absolute;
+                right: 15%;
+                top: 10%;
+                width: 15%;
+                height: 80%;
+                background-color: orange;
+                color: #fff;
+                text-align: center;
+            }
+            .banner {
+                height: 390px;
+                margin-top: 50px;
+            }
+            .text1 {
+                display: none;
+            }
+            .text2 {
+                display: none;
+            }
+            .text3 {
+                display: block;
+                margin-left: 20%;
+                font-size: 17px;
+                color: white;
+            }
+            .search {
+                position: absolute;
+                left: 5%;
+                width: 90%;
+                border: 3px solid rgba(24, 27, 13, 0.5);
+                border-radius: 5px;
+                bottom: 40%;
+                padding: 0;
+            }
+            .car1 {
+                display: none;
+            }
+            .car2 {
+                display: none;
+            }
+            .car {
+                width: 100%;
+                height: 180px;
+                background: white;
+            }
+            .othercar {
+                width: 100%;
+                margin: 0 auto;
+                display: block;
+                padding-top: 8%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .othercar button {
+                font-size: 20px;
+                width: 20%;
+                height: 22%;
+                border: solid 1px #b5b5b5;
+                border-radius: 10px;
+                margin-top: 5%;
+                color: gray;
+            }
+            .othercar h2 {
+                font-size: 28px;
+                color: blue;
+            }
+            .othercar p {
+                font-size: 15px;
+                color: gray;
+            }
+            .route {
+                margin-top: 20px;
+                width: 100%;
+                background: #fff;
+                height: 1150px;
+            }
+            .routetitle {
+                display: none;
+            }
+            .routeimg {
+                display: none;
+            }
+            .otherroute {
+                display: block;
+            }
+            .othertitle {
+                width: 100%;
+                height: 100px;
+                margin-bottom: 20px;
+                padding-top: 10%;
+                border-bottom: 0.5px solid rgba(208, 209, 204, 0.7);
+            }
+            .othertitle p {
+                color: black;
+                font-size: 25px;
+                border-left: 3px solid #e8420a;
+                text-align: left;
+                padding-left: 3%;
+            }
+            .othercover {
+                text-align: left;
+                position: absolute;
+                z-index: 100;
+                width: 100%;
+                height: 90px;
+                background-color: #000;
+                opacity: 0.7;
+                bottom: 0;
+                color: #fff;
+                padding-top: 3%;
+                padding-left: 3%;
+            }
+            .othercover p {
+                font-size: 20px;
+            }
+            .othercover div {
+                position: relative;
+                margin-left: 65%;
+                bottom: 100%;
+                font-size: 30px;
+            }
+            .little_button {
+                font-size: 20px;
+                width: 30%;
+                height: 30%;
+                border: solid 1px #b5b5b5;
+                border-radius: 10px;
+                margin-top: 10%;
+                color: #b5b5b5;
+            }
+            .mission_little {
+                display: block;
+            }
+            .mission_little span {
+                font-size: 18px;
+            }
+            .mission_title {
+                display: none;
+            }
+            .missionimg {
+                width: 90%;
+                height: 800px;
+                position: relative;
+            }
+            .newleft {
+                position: absolute;
+                top: 0;
+                margin: 0 auto;
+                width: 100%;
+                height: 30%;
+            }
+            .servc1 {
+                display: none;
+            }
+            .servc2 {
+                display: block;
+                text-align: center;
+                line-height: 50px;
+            }
+            .newright {
+                padding-top: 1%;
+                position: absolute;
+                top: 40%;
+                text-align: left;
+                width: 100%;
+                height: 32%;
+                background: #fff;
+                color: #000;
+            }
+            .newlast {
+                position: absolute;
+                bottom: 2%;
+            }
+            .mission_last {
+                display: none;
+            }
+            .little_sbox {
+                display: block;
+                margin-top: 0;
+                background-color: #fff;
+            }
+            .little_sbox h3 {
+                padding: 0;
+                text-align: center;
+            }
+            .sbox_ul {
+                position: relative;
+                width: 90%;
+                margin: 0 auto;
+                height: 185px;
+                border-bottom: 0.5px solid rgba(208, 209, 204, 0.7);
+            }
+            .sbox_icon {
+                position: relative;
+                width: 30%;
+                height: 100%;
+            }
+            .sbox_icon img {
+                position: absolute;
+                left: 30%;
+                top: 30%;
+            }
+            .sbox_letters {
+                position: absolute;
+                top: 35%;
+                left: 40%;
+                font-size: 16px;
+            }
+            .sbox_letters p {
+                color: #000;
+            }
+            .last {
+                display: none;
+            }
+            .lastDiv {
+                display: block;
+            }
+            .lastDiv p {
+                color: white;
+                font-size: 15px;
+                text-align: center;
+                margin-top: 12px;
+            }
+            .lastDiv p:nth-child(1) {
+                line-height: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header navbar-fixed-top">
+        <div class="consult">
+            <div style="height: 35px;line-height: 35px;color: #eee;float: right;margin-right: 100px;">
+                <img src="img/tell.png">&nbsp;&nbsp;
+                <a href="#">400-808-8682</a>&nbsp;&nbsp;
+                <a href="#">请登录</a>&nbsp;&nbsp;
+                <span>&nbsp;|&nbsp;</span>&nbsp;
+                <a href="#">注册</a>
+            </div>
+        </div>
+        <nav class="navbar" style=" height: 60px;background-color: #eee;z-index: 100;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class=" btn Divbtn">快速定制</button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav1">
+                    <span class="icon-bar" style="background:#000;"></span>
+                    <span class="icon-bar" style="background:#000;"></span>
+                    <span class="icon-bar" style="background:#000;"></span>
+                </button>
+                    <img src="img/logo.png" style="margin-right: 100px;" />
+                </div>
+                <div class=" collapse navbar-collapse " id="nav1 ">
+                    <ul class="nav navbar-nav ">
+                        <li><a href="# ">首页</a></li>
+                        <li><a href="# ">热门路线</a></li>
+                        <li><a href="# ">签证推荐</a></li>
+                        <li><a href="# ">使命愿景</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container banner ">
+        <div style=" margin-left: 12%;margin-top: 10%;">
+            <h1 style="color:white;">悠游古欧洲&nbsp;&nbsp;遍览德法瑞意</h1> <br/>
+            <p class="text1">巴黎卢浮宫、塞纳河游船、凡尔赛宫</p>
+            <p class="text2">
+                少女峰、大运河游船、金色列车，西庸城堡
+            </p>
+        </div>
+        <p class="text3">
+            全程升级热早+ 1晚5星酒店
+        </p>
+    </div>
+    <div class="container search ">
+        <div class="row ">
+            <div class="form-inline col-md-12 col-xs-12 ">
+                <div style="background:orange;border-radius:5px;">
+                    <button class="mudi"><img src="img/position.png "/>
+                    目的地</button>
+                    <input class="btn" style="display: inline-block;margin:0 -4px;padding:0;height: 45px;width: 50%;border:none;" type=" search " placeholder=" 日本&nbsp;美国&nbsp;英国&nbsp;地中海 ">
+                    <button class="btn" style="background-color:orange;border:none;width:25%;height: 45px;border-top-right-radius: 2px;border-bottom-right-radius: 2px;"><img src="img/search.png "/></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="car">
+        <div class="car1">
+            <div>
+                <h2 style="color:white;">机场接送 省钱省心</h2>
+                <p style="color:white;">提供上海、苏州、无锡各市</p>
+                <p style="color:white;">往返机场、码头接送服务，更有包车服务</p>
+            </div>
+        </div>
+        <div class="car2">
+            <img class="img-responsive " src="img/car.png " style="position: absolute;top: 27%;left: 32.5%;" alt=" 小汽车 ">
+            <p>车辆接送</p>
+            <button type="button " class="btn btn-link ">查看详情</button>
+        </div>
+        <div class="othercar ">
+            <img src="img/carH.png " alt="car ">
+            <div>
+                <h2>机场接送 省心省力</h2>
+                <p>提供上海、苏州、无锡各市</p>
+                <p>往返机场、码头接送服务，更有包车服务</p>
+            </div>
+            <button type="button " class="btn btn-link ">查看详情</button>
+        </div>
+    </div>
+    <div class="container route " id="route ">
+        <div class="routetitle ">
+            <h2>热 门 线 路</h2>
+            <p>Popular tourist routes</p>
+        </div>
+        <div class="routeimg">
+            <div class="leftimg ">
+                <div style="height: 383px;margin: 0; ">
+                    <img class="img-responsive " src="img/hot1.jpg ">
+                </div>
+                <div class="left1 ">
+                    <p>海南三亚5天4晚，纯玩、4晚红树林度假王国</p>
+                    <p>￥<span>2580</span>&nbsp;/&nbsp;人起</p>
+                </div>
+                <div style="height: 438px;margin: 0; ">
+                    <img class="img-responsive " src="img/hot2.jpg ">
+                </div>
+                <div class="left2">
+                    <p>德法意欧洲四国，ABCD任意路线由您挑选</p>
+                    <p>￥<span>7999</span>&nbsp;/&nbsp;人起</p>
+                </div>
+            </div>
+            <div class="rightimg ">
+                <div class="right1 " style="height: 293px;margin-bottom: 5px ">
+                    <img class="img-responsive " src="img/hot3.jpg " />
+                    <div class="right_cover ">
+                        <p style="color: #fff;margin-left: 40px;">曼谷+芭提雅 国际五星，赠送2220大礼包，绝无自费</p>
+                        <p style="color: #fff;margin-left: 40px;">￥<span>2799</span>&nbsp;&nbsp;/&nbsp;人起</p>
+                    </div>
+                </div>
+                <div class="right1 " style="height: 353px;margin-bottom: 5px ">
+                    <img class="img-responsive " src="img/hot4.jpg " />
+                    <div class="right_cover ">
+                        <p style="color: #fff;margin-left: 40px;">日本本州游 樱花、寿司、温泉、美食</p>
+                        <p style="color: #fff;margin-left: 40px;">￥<span>5399</span>&nbsp;&nbsp;/&nbsp;人起</p>
+                    </div>
+                </div>
+                <div class="right1" style="height: 362px ">
+                    <img class="img-responsive " src="img/hot5.jpg " />
+                    <div class="right_cover ">
+                        <p style="color: #fff;margin-left: 40px;">斯里兰卡7天6晚全景游 保证入住2晚香格里拉</p>
+                        <p style="color: #fff;margin-left: 40px;">￥<span>7999</span>&nbsp;&nbsp;/&nbsp;人起</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="otherroute ">
+            <div class="othertitle">
+                <p>热门线路</p>
+            </div>
+            <div>
+                <div class="right1 " style="margin-bottom: 5px ">
+                    <img style="margin: 0 auto; " class="img-responsive " src="img/hot1.jpg " />
+                    <div class="othercover ">
+                        <p>海南三亚5天4晚</p>
+                        <p>纯玩、4晚红树林度假王国</p>
+                        <div>￥2580/人起</div>
+                    </div>
+                </div>
+                <div class="right1">
+                    <img style="margin: 0 auto; " class="img-responsive " src="img/hot2.jpg " />
+                    <div class="othercover">
+                        <p>德法意欧洲4国</p>
+                        <p>ABCD任意路线由您挑选</p>
+                        <div>￥7999/人起</div>
+                    </div>
+                </div>
+                <div style="height: 200px; ">
+                    <button type="button " class="btn btn-link little_button ">查看更多 ></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mission " id="wish">
+        <div class="mission_little " class="servc2 ">
+            <div class="othertitle ">
+                <p>使命与愿景：<span>让旅游回归本质，体验纯粹旅游</span></p>
+            </div>
+        </div>
+        <div class="mission_title " class="servc1 ">
+            <h2 style="font-size: 35px ">使&nbsp;命&nbsp;与&nbsp;愿&nbsp;景</h2>
+            <br/>
+            <p style="font-size: 14px; color:#000; ">让旅游回归本质，体验纯粹旅游</p>
+        </div>
+        <div class="missionimg ">
+            <div class="mission1 ">
+                <div class="newleft " style="display:inline-block;">
+                    <img class="img-responsive " src="img/mission1.jpg " style="width: 100%;height: 450px;">
+                </div>
+                <div class="newright " style="height:450px;display:inline-block;">
+                    <h3 class="servc1 " style="text-align: center;">服务理念及优势</h3>
+                    <h3 class="servc2 " style="text-align: center;">--服务理念--</h3>
+                    <article>“英华逸游”通过重新打造旅游全程中的产品线路设计、出行交通方案、陪游向导服务、增值关怀项目等，为客户提供高品质的旅游体验。英华逸游在泰国、欧洲、等多个国家拥有丰富的旅游资源，同时致力于给用户提供性价比高的产品和服务。</article>
+                </div>
+            </div>
+            <img class="newlast " class="img-responsive " src="img/mission2.jpg " alt="2 " style="margin-bottom: 5px; ">
+        </div>
+        <div class="mission_last ">
+            <div class="last_box ">
+                <img class="img-responsive img1 " src="img/rorate.png ">
+                <img class="img-responsive img2 " src="img/icon1.png ">
+                <span>品质行程</span>
+                <div class="last_text ">
+                    <p>旅游达人精心设计，基于口碑反复打磨，</p>
+                    <p>全网最好，敢跟任何产品比</p>
+                </div>
+            </div>
+            <div class="last_box ">
+                <img class="img-responsive img1 " src="img/rorate.png " alt="外圈圈 ">
+                <img class="img-responsive img2 " src="img/icon2.png " alt="2 " style="width: 46px; height: 62px; ">
+                <span>品质消费</span>
+                <div class="last_text ">
+                    <p>不推自费，</p>
+                    <p>不进垃圾购物店和伪景点</p>
+                </div>
+            </div>
+            <div class="last_box ">
+                <img class="img-responsive img1 " src="img/rorate.png " alt="外圈圈 ">
+                <img class="img-responsive img2 " src="img/icon3.png " alt="3 " style="width: 45px;height: 51px; ">
+                <span>品质小团</span>
+                <div class="last_text ">
+                    <p>独立成团不散拼，</p>
+                    <p>只跟亲朋好友一起玩，每天发团</p>
+                </div>
+            </div>
+        </div>
+        <div class="little_sbox ">
+            <h3>--服务优势--</h3>
+            <div class="sbox_ul ">
+                <div class="sbox_icon "><img style="top:40% " class="img-responsive " src="img/icon11.png " alt="11 "></div>
+                <div class="sbox_letters ">
+                    <p>旅游达人精心设计，基于口碑反复打磨，</p>
+                    <p>全网最好，敢跟任何产品比</p>
+                </div>
+            </div>
+            <div class="sbox_ul ">
+                <div class="sbox_icon "><img class="img-responsive " src="img/icon22.png " alt="22 "></div>
+                <div class="sbox_letters ">
+                    <p>不推自费，</p>
+                    <p>不进垃圾购物店和伪景点</p>
+                </div>
+            </div>
+            <div class="sbox_ul ">
+                <div class="sbox_icon "><img class="img-responsive " src="img/icon33.png " alt="33 "></div>
+                <div class="sbox_letters ">
+                    <p>独立成团不散拼，</p>
+                    <p>只跟亲朋好友一起玩，每天发团</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style=" background-color:black;height:300px; ">
+        <div class="container last ">
+            <div style="height:40px;margin-bottom:50px; ">
+                <ul>
+                    <li>
+                        <p style="font-size:15px;color:white; ">合作伙伴</p>
+                    </li>
+                    <li><img src="img/xiecheng.png ">
+                        <p>携程网</p>
+                    </li>
+                    <li><img src="img/feizhu.png ">
+                        <p>阿里飞猪</p>
+                    </li>
+                    <li><img src="img/quna.png ">
+                        <p>去哪</p>
+                    </li>
+                    <li><img src="img/suzhou.png ">
+                        <p>苏州旅游局</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="row col-md-12 " style="margin-bottom:15px; ">
+                <div class=" col-md-1 " style="font-size:15px; color:white; ">热门位置</div>
+                <div class=" col-md-11 " style="color:gainsboro;font-size:13px;">韩国&nbsp; 日本&nbsp; 菲律宾 &nbsp;&nbsp; 越南&nbsp; 老挝&nbsp; 柬埔寨&nbsp;&nbsp; 泰国&nbsp; 马来西亚&nbsp; 新加坡&nbsp; 印度尼西亚&nbsp; 印度&nbsp; 斯里兰卡&nbsp; 土耳其&nbsp; 阿联酋&nbsp; 西班牙&nbsp; 意大利&nbsp; 希腊&nbsp; 法国&nbsp; 比利时&nbsp; 荷兰 &nbsp; 英国 &nbsp; 瑞士 &nbsp; 奥地利 &nbsp;德国
+                    &nbsp; 匈牙利 &nbsp;俄罗斯 捷克 芬兰 葡萄牙 冰岛 美国 加拿大 巴西 阿根廷 澳大利亚 新西兰
+                </div>
+            </div>
+            <div class="row col-md-12 " style="margin-bottom:15px; ">
+                <div class=" col-md-1 " style="font-size:15px; color:white; ">主题服务</div>
+                <div class="col-md-11 " style="color:gainsboro;font-size:13px; ">海岛度假 历史文化 探索冒险 美食购物 都市生活 海外游学 邮轮度假 蜜月摄影 亲子乐园
+                </div>
+            </div>
+            <div class="row col-md-12 " style="margin-bottom:15px; ">
+                <div class=" col-md-1 " style="font-size:15px;color:white; ">友情链接</div>
+                <div class="col-md-11 " style="color:gainsboro;font-size:13px; ">马蜂窝 穷游 booking 苏州旅游局 驴友网 吾爱全球签证中心 酒店团购 携程旅游攻略 天巡职航在线 满天飞旅游网 中国旅游网 澳乐网 背包兔旅游行程 出境旅游 国际酒店 广州旅行社 出境旅游 517旅行 花生游 家园网 海外婚礼
+                </div>
+            </div>
+        </div>
+        <div class="lastDiv">
+            <p>2020 &nbsp;&nbsp;@苏州英华国际旅游有限公司 版权所有
+                <br> 苏ICP备号、2020
+                <br>@苏州英华国际旅游有限公司 版权所有
+                <br>技术支持&nbsp;&nbsp;杭州科技
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
+
+</html>
